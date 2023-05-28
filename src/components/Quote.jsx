@@ -1,35 +1,48 @@
-import React from 'react';
-import axios from 'axios';
-import './Quote.css';
+import React, { useState, useEffect } from 'react';
 
-function Quote() {
-  const [quote, setQuote] = React.useState('');
-  const [author, setAuthor] = React.useState('');
 
-  React.useEffect(() => {
+const Quote = () => {
+  const [quote, setQuote] = useState('');
+  const [author, setAuthor] = useState('');
+
+  useEffect(() => {
     fetchQuote();
   }, []);
 
   const fetchQuote = async () => {
     try {
-      const response = await axios.get('url');
-      setQuote(response.data.quote);
-      setAuthor(response.data.author);
+      const response = await fetch('https://api.quotable.io/random');
+      const data = await response.json();
+      setQuote(data.content);
+      setAuthor(data.author);
     } catch (error) {
-      console.error(error);
+      console.error('Error fetching quote:', error);
     }
   };
 
+  const handleNewQuote = () => {
+    fetchQuote();
+  };
+
+  const handleTweetQuote = () => {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      `"${quote}" - ${author}`
+    )}`;
+    window.open(twitterUrl, '_blank');
+  };
+
   return (
-    <div className='quote-container'>
-      <h1 className='quote'>{quote}</h1>
-      <div className='author-container'>
-        <p className='author'>{author}</p>
-        {/* test */}
-        <button onClick={fetchQuote} className='new-quote-button'>New Quote</button>
-      </div>
+    <div id="quote-box">
+      <p id="text">{quote}</p>
+      <p id="author"><li>{author}</li></p>
+      <button id="new-quote" onClick={handleNewQuote}>
+        New Quote
+      </button>
+      <a id="tweet-quote" href="#" onClick={handleTweetQuote}>
+        Tweet Quote
+      </a>
     </div>
   );
-}
+};
 
 export default Quote;

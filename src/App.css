@@ -1,16 +1,81 @@
-.container {
-  text-align: center;
-}
-
-.container {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000;
+}
+@keyframes borderAnimation {
+  0% {
+    border-color: #b877f8;
+  }
+  25% {
+    border-color: #ff0e0e;
+  }
+  50% {
+    border-color: #87cefa;
+  }
+  75% {
+    border-color: #ffd700;
+  }
+  100% {
+    border-color: #ccc;
+  }
 }
 
+#quote-box {
+  max-width: 600px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #4683b49c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation-name: borderAnimation;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
+#text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  /* Add other styles as needed */
+}
+
+#author {
+  font-size: 1rem;
+  text-align: right;
+  /* Add other styles as needed */
+}
+
+#new-quote {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #87cefa;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#new-quote:hover {
+  background-color: #4682b4;
+}
+
+#tweet-quote {
+  display: inline-block;
+  margin-left: 1rem;
+  color: #87cefa;
+  transition: color 0.3s ease;
+}
+
+#tweet-quote:hover {
+  color: #4682b4;
+}
+
+/* Add other styles as needed */
