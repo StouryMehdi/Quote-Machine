@@ -34,11 +34,13 @@ const Quote = () => {
   return (
     <div id="quote-box">
       <p id="text">{quote}</p>
-      <p id="author"><li>{author}</li></p>
+      <p id="author">
+        <li>{author}</li>
+      </p>
       <button id="new-quote" onClick={handleNewQuote}>
         New Quote
       </button>
-      <a id="tweet-quote" href="#" onClick={handleTweetQuote}>
+      <a id="tweet-quote"  href="#" onClick={handleTweetQuote}>
         Tweet Quote
       </a>
     </div>

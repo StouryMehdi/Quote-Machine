@@ -24,7 +24,7 @@
 }
 
 #quote-box {
-  max-width: 600px;
+  width: 500px;
   color: #fff;
   margin: 0 auto;
   padding: 2rem;
